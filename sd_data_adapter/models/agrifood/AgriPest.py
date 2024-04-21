@@ -1,12 +1,13 @@
 from dataclasses import dataclass
 from typing import Optional, List
+
 from sd_data_adapter.models.agrifood.AgriProduct import AgriProductType
 
 
 @dataclass
-class AgriSoil:
+class AgriPest:
     """
-    Class representing an agricultural soil.
+    Class representing an agricultural pest.
 
     Attributes:
         id (str): The unique identifier of the pest.
@@ -27,7 +28,6 @@ class AgriSoil:
         source (Optional[List[str]], default=None): List of sources of the pest.
 
     """
-
     id: str
     type: str
     name: str
