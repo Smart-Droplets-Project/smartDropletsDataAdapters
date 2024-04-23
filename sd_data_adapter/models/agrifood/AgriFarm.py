@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional, List
+
+from sd_data_adapter.models.agrifood.AgriParcel import AgriParcel
 from sd_data_adapter.models.util.Address import Address
 from sd_data_adapter.models.util.ContactPoint import ContactPoint
 
@@ -46,11 +48,11 @@ class AgriFarm:
     dateCreated: Optional[str] = None
     dateModified: Optional[str] = None
     description: Optional[str] = None
-    hasAgriParcel: Optional[List[object]] = None
+    hasAgriParcel: Optional[List[AgriParcel | str]] = None
     hasBuilding: Optional[List[object]] = None
     landLocation: Optional[object] = None
     location: Optional[object] = None
-    ownedBy: Optional[List[str]] = None
+    ownedBy: Optional[str] = None
     relatedSource: Optional[List[str]] = None
     seeAlso: Optional[List[str]] = None
     source: Optional[List[str]] = None

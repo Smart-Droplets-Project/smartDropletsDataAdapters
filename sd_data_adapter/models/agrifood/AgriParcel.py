@@ -3,7 +3,8 @@ from typing import List, Optional
 
 import AgriCrop, AgriSoil
 from sd_data_adapter.models.util import Address
-from sd_data_adapter.models.util.Parcel import CropStatus, ProductCategory, IrrigationType, SoilTextureType
+from sd_data_adapter.models.util.Parcel import CropStatus, ProductCategory, SoilTextureType
+from sd_data_adapter.models.util.Operation import IrrigationType
 
 
 @dataclass
@@ -40,7 +41,7 @@ class AgriParcel:
     - irrigationSystemType (Optional[IrrigationType]): The type of irrigation system used in the parcel.
     - lastPlantedAt (Optional[str]): The date when the last planting was done in the parcel.
     - name (Optional[str]): The name of the parcel.
-    - ownedBy (Optional[List[str]]): The entities that own the parcel.
+    - ownedBy (Optional[List[str]]): Owner of the farm.
     - owner (Optional[List[str]]): The owners of the parcel.
     - relatedSource (Optional[List[str]]): The related sources of the parcel.
     - seeAlso (Optional[List[str]]): The related resources for the parcel.
@@ -50,8 +51,8 @@ class AgriParcel:
     """
     id: int
     type: str
-    location: object  #???
-    area: int  # area of parcel in square meters
+    location: object
+    area: int
     hasAgriCrop: list[AgriCrop]
 
     address: Optional[Address] = None
@@ -64,15 +65,15 @@ class AgriParcel:
     dataCreated: Optional[str] = None
     dateModified: Optional[str] = None
     description: Optional[str] = None
-    hasAgriParcelChildren: Optional[List['AgriParcel']] = None
-    hasAgriParcelParent: Optional[str] = None
-    hasAgriSoil: Optional[List[AgriSoil]] = None
-    hasAgriQualityObserved: Optional[List[object]] = None  #List of?
-    hasDevices: Optional[List[object]] = None
+    hasAgriParcelChildren: Optional[List['AgriParcel' | str]] = None
+    hasAgriParcelParent: Optional['AgriParcel' | str] = None
+    hasAgriSoil: Optional[List[AgriSoil | str]] = None
+    hasAgriQualityObserved: Optional[List[object | str]] = None
+    hasDevices: Optional[List[object | str]] = None
     irrigationSystemType: Optional[IrrigationType] = None
     lastPlantedAt: Optional[str] = None
     name: Optional[str] = None
-    ownedBy: Optional[List[str]] = None
+    ownedBy: Optional[str] = None
     owner: Optional[List[str]] = None
     relatedSource: Optional[List[str]] = None
     seeAlso: Optional[List[str]] = None

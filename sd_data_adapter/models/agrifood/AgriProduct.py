@@ -27,7 +27,7 @@ class AgriProductType:
         description (Optional[str]): The description of the product type.
         hasAgriProductTypeChildren (Optional[List['AgriProductType']]): List of child product types.
         hasAgriProductTypeParent (Optional[List['AgriProductType']]): List of parent product types.
-        owner (Optional[List[str]]): List of product owners.
+        owner (Optional[str]): Product owner.
         relatedSource (Optional[List[str]]): List of related sources.
         seeAlso (Optional[List[str]]): List of references to other sources related to the product type.
         source (Optional[List[str]]): List of primary sources of the product type.
@@ -38,16 +38,16 @@ class AgriProductType:
     name: str
     root: bool
 
-    agroVocConcept = Optional[str]
+    agroVocConcept: Optional[str] = None
     alternateName: Optional[str] = None
     category: Optional[List[ProductCategory]] = None
     dataProvider: Optional[str] = None
     dataCreated: Optional[str] = None
     dateModified: Optional[str] = None
     description: Optional[str] = None
-    hasAgriProductTypeChildren: Optional[List['AgriProductType']] = None
-    hasAgriProductTypeParent: Optional[List['AgriProductType']] = None
-    owner: Optional[List[str]] = None
+    hasAgriProductTypeChildren: Optional[List['AgriProductType' | str]] = None
+    hasAgriProductTypeParent: Optional[List['AgriProductType'] | str] = None
+    owner: Optional[str] = None
     relatedSource: Optional[List[str]] = None
     seeAlso: Optional[List[str]] = None
     source: Optional[List[str]] = None

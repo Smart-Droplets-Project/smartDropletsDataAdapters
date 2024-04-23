@@ -40,7 +40,7 @@ class AgriCrop:
     type: str
     name: str
 
-    agroVocConcept = Optional[str]  # Reference to the agrovoc term associated with this item
+    agroVocConcept: Optional[str] = None
     alternateName: Optional[str] = None
     dataProvider: Optional[str] = None
     dataCreated: Optional[str] = None
@@ -48,10 +48,10 @@ class AgriCrop:
     description: Optional[str] = None
     plantingFrom: Optional[List[str]] = None
     harvestingInterval: Optional[List[str]] = None
-    hasAgriFertilizer: Optional[List[AgriProductType]] = None  #??
-    hasAgriPest: Optional[List[AgriPest]] = None
-    hasAgriSoil: Optional[List[AgriSoil]] = None
-    owner: Optional[List[str]] = None
+    hasAgriFertilizer: Optional[List[AgriProductType | str]] = None  #??
+    hasAgriPest: Optional[List[AgriPest | str]] = None
+    hasAgriSoil: Optional[List[AgriSoil | str]] = None
+    owner: Optional[str] = None
     relatedSource: Optional[List[str]] = None
     seeAlso: Optional[List[str]] = None
     source: Optional[List[str]] = None

@@ -1,29 +1,30 @@
 from dataclasses import dataclass
+from typing import Optional, List
 
 
 @dataclass
 class Address:
     """
 
-        Address class represents a physical address.
+    This class represents an address.
 
-        Attributes:
-            addressCountry (str): The country of the address.
-            addressLocality (str): The locality of the address.
-            addressRegion (str): The region or province of the address.
-            district (str): The district of the address.
-            postOfficeBoxNumber (str): The post office box number of the address.
-            postalCode (str): The postal code of the address.
-            streetAddress (list[str]): List of street names in the address.
-            streetNr (str): The street number of the address.
+    Optional Attributes:
+        addressCountry (Optional[str]): The country of the address.
+        addressLocality (Optional[str]): The locality of the address.
+        addressRegion (Optional[str]): The region of the address.
+        district (Optional[str]): The district of the address.
+        postOfficeBoxNumber (Optional[str]): The post office box number of the address.
+        postalCode (Optional[str]): The postal code of the address.
+        streetAddress (Optional[List[str]]): The street address of the address.
+        streetNr (Optional[str]): The street number of the address.
 
     """
 
-    addressCountry: str
-    addressLocality: str
-    addressRegion: str
-    district: str
-    postOfficeBoxNumber: str
-    postalCode: str
-    streetAddress: list[str]
-    streetNr: str
+    addressCountry: Optional[str] = None
+    addressLocality: Optional[str] = None
+    addressRegion: Optional[str] = None
+    district: Optional[str] = None
+    postOfficeBoxNumber: Optional[str] = None
+    postalCode: Optional[str] = None
+    streetAddress: Optional[List[str]] = None
+    streetNr: Optional[str] = None
