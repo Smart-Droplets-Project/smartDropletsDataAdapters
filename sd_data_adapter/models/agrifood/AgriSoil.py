@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional, List
-from sd_data_adapter.models.agrifood.AgriProduct import AgriProductType
+from sd_data_adapter.models.agrifood.AgriProductType import AgriProductType
 
 
 @dataclass
@@ -20,7 +20,7 @@ class AgriSoil:
         dataCreated (Optional[str], default=None): The date when the pest data was created.
         dateModified (Optional[str], default=None): The date when the pest data was last modified.
         description (Optional[str], default=None): Description of the pest.
-        hasAgriProductType (Optional[List[AgriProductType]], default=None): List of agri product types associated with the pest.
+        hasAgriProductType (Optional[List[AgriProductType] | str], default=None): List of agri product types associated with the pest.
         owner (Optional[str], default=None): Owner of the pest.
         relatedSource (Optional[List[str]], default=None): List of related sources of the pest.
         seeAlso (Optional[List[str]], default=None): List of see also references related to the pest.
@@ -38,8 +38,9 @@ class AgriSoil:
     dataCreated: Optional[str] = None
     dateModified: Optional[str] = None
     description: Optional[str] = None
-    hasAgriProductType: Optional[List[AgriProductType]] = None
+    hasAgriProductType: Optional[List[AgriProductType]] | Optional[List[str]] = None
     owner: Optional[str] = None
     relatedSource: Optional[List[str]] = None
     seeAlso: Optional[List[str]] = None
     source: Optional[List[str]] = None
+

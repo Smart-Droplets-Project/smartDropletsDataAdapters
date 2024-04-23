@@ -65,11 +65,11 @@ class AgriParcel:
     dataCreated: Optional[str] = None
     dateModified: Optional[str] = None
     description: Optional[str] = None
-    hasAgriParcelChildren: Optional[List['AgriParcel' | str]] = None
-    hasAgriParcelParent: Optional['AgriParcel' | str] = None
-    hasAgriSoil: Optional[List[AgriSoil | str]] = None
-    hasAgriQualityObserved: Optional[List[object | str]] = None
-    hasDevices: Optional[List[object | str]] = None
+    hasAgriParcelChildren: Optional[List['AgriParcel']] | Optional[List[str]] = None
+    hasAgriParcelParent: Optional['AgriParcel'] | Optional[str] = None
+    hasAgriSoil: Optional[List[AgriSoil]] | Optional[List[str]] = None
+    hasAgriQualityObserved: Optional[List[object]] | Optional[List[str]] = None
+    hasDevices: Optional[List[object]] | Optional[List[str]] = None
     irrigationSystemType: Optional[IrrigationType] = None
     lastPlantedAt: Optional[str] = None
     name: Optional[str] = None

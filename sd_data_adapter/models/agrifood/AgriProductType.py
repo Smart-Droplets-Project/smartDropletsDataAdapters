@@ -45,8 +45,8 @@ class AgriProductType:
     dataCreated: Optional[str] = None
     dateModified: Optional[str] = None
     description: Optional[str] = None
-    hasAgriProductTypeChildren: Optional[List['AgriProductType' | str]] = None
-    hasAgriProductTypeParent: Optional[List['AgriProductType'] | str] = None
+    hasAgriProductTypeChildren: Optional[List['AgriProductType']] | Optional[List[str]] = None
+    hasAgriProductTypeParent: Optional['AgriProductType'] | Optional[str] = None
     owner: Optional[str] = None
     relatedSource: Optional[List[str]] = None
     seeAlso: Optional[List[str]] = None

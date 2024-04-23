@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional, List
 
 from sd_data_adapter.models.agrifood.AgriPest import AgriPest
-from sd_data_adapter.models.agrifood.AgriProduct import AgriProductType
+from sd_data_adapter.models.agrifood.AgriProductType import AgriProductType
 from sd_data_adapter.models.agrifood.AgriSoil import AgriSoil
 
 

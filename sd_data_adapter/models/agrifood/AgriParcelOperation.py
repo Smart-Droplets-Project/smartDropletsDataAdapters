@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional, List
 
 from sd_data_adapter.models.agrifood.AgriParcel import AgriParcel
-from sd_data_adapter.models.agrifood.AgriProduct import AgriProductType
+from sd_data_adapter.models.agrifood.AgriProductType import AgriProductType
 from sd_data_adapter.models.util.Operation.OperationType import OperationType
 from sd_data_adapter.models.util.Operation.OperationResult import OperationResult
 from sd_data_adapter.models.util.Operation.WaterSource import WaterSource
@@ -62,7 +62,7 @@ class AgriParcelOperation:
     endedAt: Optional[str] = None
     hasAgriProductType: Optional[List[AgriProductType | str]] = None
     hasOperator: Optional[str] = None
-    irrigationRecord: Optional[str] = None  #Relationship with the irrigation record of the execution
+    irrigationRecord: Optional[str] = None
     operationType: Optional[OperationType] = None
     owner: Optional[List[str]] = None
     quantity: Optional[float] = None
