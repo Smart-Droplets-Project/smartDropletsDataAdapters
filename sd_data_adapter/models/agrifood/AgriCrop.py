@@ -1,5 +1,9 @@
+import uuid
 from dataclasses import dataclass
 from typing import Optional, List
+from uuid import UUID
+
+from ngsildclient import Entity, SmartDataModels, Client
 
 from sd_data_adapter.models.agrifood.AgriPest import AgriPest
 from sd_data_adapter.models.agrifood.AgriProductType import AgriProductType
@@ -36,9 +40,9 @@ class AgriCrop:
         source: Optional[List[str]] - The source(s) of the crop.
     """
 
-    id: str
     type: str
     name: str
+    id: str = str(uuid.uuid4())
 
     agroVocConcept: Optional[str] = None
     alternateName: Optional[str] = None
@@ -55,3 +59,57 @@ class AgriCrop:
     relatedSource: Optional[List[str]] = None
     seeAlso: Optional[List[str]] = None
     source: Optional[List[str]] = None
+
+    def create(self):
+        crop = Entity('AgriCrop', f'urn:ngsi-ld:AgriCrop:crop-{self.id}-id')
+
+        # Definitely prop
+        crop.prop('name', self.name)
+        if self.agroVocConcept is not None:
+            crop.prop('agroVocConcept', self.agroVocConcept)
+        if self.alternateName is not None:
+            crop.prop('alternateName', self.alternateName)
+        if self.dataProvider is not None:
+            crop.prop('dataProvider', self.dataProvider)
+        if self.dataCreated is not None:
+            crop.prop('dataCreated', self.dataCreated)
+        if self.dateModified is not None:
+            crop.prop('dateModified', self.dateModified)
+        if self.description is not None:
+            crop.prop('description', self.description)
+        if self.owner is not None:
+            crop.prop('owner', self.owner)
+        if self.plantingFrom is not None and len(self.plantingFrom) > 0:
+            crop.prop('plantingFrom', self.plantingFrom)
+        if self.relatedSource is not None and len(self.relatedSource) > 0:
+            crop.prop('relatedSource', self.relatedSource)
+        if self.seeAlso is not None and len(self.seeAlso) > 0:
+            crop.prop('seeAlso', self.seeAlso)
+        if self.source is not None and len(self.source) > 0:
+            crop.prop('source', self.source)
+        if self.harvestingInterval is not None and len(self.harvestingInterval) > 0:
+            crop.prop('harvestingInterval', self.harvestingInterval)
+
+        if self.hasAgriFertilizer is not None and len(self.hasAgriFertilizer) > 0:
+            if "urn:ngsi-ld" in self.hasAgriFertilizer[0]:
+                crop.rel('hasAgriFertilizer', self.hasAgriFertilizer)
+            else:
+                crop.prop('hasAgriFertilizer', self.hasAgriFertilizer)
+        else:
+            crop.prop('hasAgriFertilizer', [])
+        if self.hasAgriPest is not None and len(self.hasAgriPest) > 0:
+            if "urn:ngsi-ld" in self.hasAgriPest[0]:
+                crop.rel('hasAgriPest', self.hasAgriFertilizer)
+            else:
+                crop.prop('hasAgriPest', self.hasAgriFertilizer)
+        else:
+            crop.prop('hasAgriPest', [])
+        if self.hasAgriSoil is not None and len(self.hasAgriSoil) > 0:
+            if "urn:ngsi-ld" in self.hasAgriSoil[0]:
+                crop.rel('hasAgriSoil', self.hasAgriFertilizer)
+            else:
+                crop.prop('hasAgriSoil', self.hasAgriFertilizer)
+        else:
+            crop.prop('hasAgriSoil', [])
+
+        return crop
