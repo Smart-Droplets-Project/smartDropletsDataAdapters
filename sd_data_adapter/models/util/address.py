@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional, List
 
-from sd_data_adapter.models.util import Util
+from sd_data_adapter.models import Util
 
 
 @dataclass

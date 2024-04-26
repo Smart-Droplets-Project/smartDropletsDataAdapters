@@ -1,9 +1,9 @@
 from enum import Enum
 
-from sd_data_adapter.models.util import Util
+from sd_data_adapter.models import Util
 
 
-class ProductCategory(Enum, Util):
+class ProductCategory(Util, Enum):
     """
 
     Enum for different product categories.

@@ -1,9 +1,9 @@
 from enum import Enum
 
-from sd_data_adapter.models.util import Util
+from sd_data_adapter.models import Util
 
 
-class CropStatus(Enum, Util):
+class CropStatus(Util, Enum):
     """A class representing the status of a crop.
 
     Attributes:

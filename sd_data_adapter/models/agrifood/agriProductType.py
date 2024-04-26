@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from typing import Optional, List, Union
 
 from sd_data_adapter.models import Property, Relationship
-from sd_data_adapter.models.util.parcel import productCategory
 
 
 @dataclass
