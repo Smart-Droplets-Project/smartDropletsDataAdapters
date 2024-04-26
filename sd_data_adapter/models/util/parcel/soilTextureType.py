@@ -1,7 +1,9 @@
 from enum import Enum
 
+from sd_data_adapter.models.util import Util
 
-class SoilTextureType(Enum):
+
+class SoilTextureType(Enum, Util):
     """
     Represents the different types of soil texture.
 

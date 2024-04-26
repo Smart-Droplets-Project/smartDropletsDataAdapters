@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional, List
 
+from sd_data_adapter.models.util import Util
+
 
 @dataclass
-class Address:
+class Address(Util):
     """
 
     This class represents an address.

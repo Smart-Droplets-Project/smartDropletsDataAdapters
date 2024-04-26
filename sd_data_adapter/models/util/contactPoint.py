@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional, List
 
+from sd_data_adapter.models.util import Util
+
 
 @dataclass
-class ContactPoint:
+class ContactPoint(Util):
     """
     Represents a contact point for a specific entity.
 

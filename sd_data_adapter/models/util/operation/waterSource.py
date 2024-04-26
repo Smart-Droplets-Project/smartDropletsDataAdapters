@@ -1,7 +1,9 @@
 from enum import Enum
 
+from sd_data_adapter.models.util import Util
 
-class WaterSource(Enum):
+
+class WaterSource(Enum, Util):
     BOREHOLE = "borehole"
     RAINFALL = "rainfall"
     RAINWATER_CAPTURE = "rainwater capture"

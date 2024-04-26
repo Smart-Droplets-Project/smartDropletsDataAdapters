@@ -1,15 +1,12 @@
+import uuid
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Optional
 
-from sd_data_adapter.models.agrifood.AgriParcel import AgriParcel
-from sd_data_adapter.models.agrifood.AgriProductType import AgriProductType
-from sd_data_adapter.models.util.Operation.OperationType import OperationType
-from sd_data_adapter.models.util.Operation.OperationResult import OperationResult
-from sd_data_adapter.models.util.Operation.WaterSource import WaterSource
+from sd_data_adapter.models import SmartDataModel, Relationship, Property
 
 
 @dataclass
-class AgriParcelOperation:
+class AgriParcelOperation(SmartDataModel):
     """
 
     This class represents an agricultural parcel operation.
@@ -46,33 +43,32 @@ class AgriParcelOperation:
     - source (Optional[List[str]]): The source(s) of the operation. (default: None)
 
     """
-    id: str
-    type: str
-    hasAgriParcel: List[AgriParcel | str]
-    plannedStartAt: str
-    plannedEndAt: str
 
+    hasAgriParcel: Relationship
+    plannedStartAt: Property
+    plannedEndAt: Property
+    id: Property = str(uuid.uuid4())
+    type: Property = 'AgriParcelOperation'
 
-    alternateName: Optional[str] = None
-    dataProvider: Optional[str] = None
-    dataCreated: Optional[str] = None
-    dateModified: Optional[str] = None
-    description: Optional[str] = None
-    startedAt: Optional[str] = None
-    endedAt: Optional[str] = None
-    hasAgriProductType: Optional[List[AgriProductType | str]] = None
-    hasOperator: Optional[str] = None
-    irrigationRecord: Optional[str] = None
-    operationType: Optional[OperationType] = None
-    owner: Optional[List[str]] = None
-    quantity: Optional[float] = None
-    relatedSource: Optional[List[str]] = None
-    reportedAt: Optional[str] = None
-    result: Optional[OperationResult] = None
-    status: Optional[str] = None
-    waterSource: Optional[WaterSource] = None
-    workOrder: Optional[str] = None
-    workRecord: Optional[str] = None
-    seeAlso: Optional[List[str]] = None
-    source: Optional[List[str]] = None
-
+    alternateName: Optional[Property] = None
+    dataProvider: Optional[Property] = None
+    dataCreated: Optional[Property] = None
+    dateModified: Optional[Property] = None
+    description: Optional[Property] = None
+    startedAt: Optional[Property] = None
+    endedAt: Optional[Property] = None
+    hasAgriProductType: Optional[Relationship] = None
+    hasOperator: Optional[Relationship] = None
+    irrigationRecord: Optional[Relationship] = None
+    operationType: Optional[Property] = None
+    owner: Optional[Property] = None
+    quantity: Optional[Property] = None
+    relatedSource: Optional[Property] = None
+    reportedAt: Optional[Property] = None
+    result: Optional[Property] = None
+    status: Optional[Property] = None
+    waterSource: Optional[Property] = None
+    workOrder: Optional[Relationship] = None
+    workRecord: Optional[Relationship] = None
+    seeAlso: Optional[Property] = None
+    source: Optional[Property] = None
