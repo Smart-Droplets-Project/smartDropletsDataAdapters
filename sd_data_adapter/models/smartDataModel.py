@@ -27,17 +27,26 @@ def to_ngsi_ld(obj: SmartDataModel):
         if field_value is None or field.name == "id" or field.name == "type":
             continue
 
-        if isinstance(field_value, Property):
-            entity.prop(field.name, field_value)
-        elif isinstance(field_value, Relationship):
-            entity.rel(field.name, field_value)
-        elif isinstance(field_value, GeoProperty):
+        if isinstance(field_value, str):
+            if "urn:ngsi-ld:" in field_value:
+                entity.rel(field.name, field_value)
+            else:
+                entity.prop(field.name, field_value)
+        if isinstance(field_value, list):
+            if len(field_value) == 0:
+                continue
+            if "urn:ngsi-ld:" in field_value[0]:
+                entity.rel(field.name, field_value)
+            else:
+                entity.prop(field.name, field_value)
+
+        elif isinstance(field_value, (Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon)):
             entity.gprop(field.name, field_value)
+        else:
+            entity.prop(field.name, field_value)
 
     return entity
 
 
 def to_object(entity: Entity):
     pass
-
-

@@ -14,8 +14,3 @@ def upload(obj: SmartDataModel):
         entity.pprint()
         print(f"Saving {entity.id} !")
         client.create(entity)
-
-
-
-agriCrop = AgriParcel(None, 2, "urn:ngsi-ld:AgriCrop:7e90b73f-e105-4599-87e2-468675876f3b-id")
-upload(agriCrop)
