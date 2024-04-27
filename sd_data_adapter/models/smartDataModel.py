@@ -1,4 +1,5 @@
 import dataclasses
+from types import NoneType
 from typing import Union, List
 
 from geojson import LineString, Point, Polygon, MultiPoint, MultiLineString, MultiPolygon
@@ -14,7 +15,7 @@ class Util:
     pass
 
 
-Property = Union[bool, int, float, str, List[str], SmartDataModel, List[SmartDataModel], List[Util]]
+Property = Union[bool, int, float, str, List[str], SmartDataModel, List[SmartDataModel], List[Util], NoneType]
 Relationship = Union[str, List[str]]
 GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
 
@@ -27,26 +28,17 @@ def to_ngsi_ld(obj: SmartDataModel):
         if field_value is None or field.name == "id" or field.name == "type":
             continue
 
-        if isinstance(field_value, str):
-            if "urn:ngsi-ld:" in field_value:
-                entity.rel(field.name, field_value)
-            else:
-                entity.prop(field.name, field_value)
-        if isinstance(field_value, list):
-            if len(field_value) == 0:
-                continue
-            if "urn:ngsi-ld:" in field_value[0]:
-                entity.rel(field.name, field_value)
-            else:
-                entity.prop(field.name, field_value)
-
-        elif isinstance(field_value, (Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon)):
-            entity.gprop(field.name, field_value)
-        else:
+        if field.type == Property:
             entity.prop(field.name, field_value)
+        elif field.type == Relationship:
+            entity.rel(field.name, field_value)
+        elif field.type == GeoProperty:
+            entity.gprop(field.name, field_value)
 
     return entity
 
 
 def to_object(entity: Entity):
     pass
+
+
