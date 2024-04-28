@@ -1,20 +1,19 @@
+import uuid
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Optional, Union
 
-from sd_data_adapter.models.agrifood.AgriPest import AgriPest
-from sd_data_adapter.models.agrifood.AgriProductType import AgriProductType
-from sd_data_adapter.models.agrifood.AgriSoil import AgriSoil
+from sd_data_adapter.models import SmartDataModel, Property, Relationship
 
 
 @dataclass
-class AgriCrop:
+class AgriCrop(SmartDataModel):
     """
     Class: AgriCrop
 
     Represents an agricultural crop.
 
     Attributes:
-        id: str - The ID of the crop.
+        id: str - The ID of the crop. Generated value: uuid.uuid4().
         type: str - The type of the crop.
         name: str - The name of the crop.
 
@@ -36,22 +35,22 @@ class AgriCrop:
         source: Optional[List[str]] - The source(s) of the crop.
     """
 
-    id: str
-    type: str
-    name: str
+    name: Property
+    id: Property = str(uuid.uuid4())
+    type: Property = 'AgriCrop'
 
-    agroVocConcept: Optional[str] = None
-    alternateName: Optional[str] = None
-    dataProvider: Optional[str] = None
-    dataCreated: Optional[str] = None
-    dateModified: Optional[str] = None
-    description: Optional[str] = None
-    plantingFrom: Optional[List[str]] = None
-    harvestingInterval: Optional[List[str]] = None
-    hasAgriFertilizer: Optional[List[AgriProductType | str]] = None  #??
-    hasAgriPest: Optional[List[AgriPest | str]] = None
-    hasAgriSoil: Optional[List[AgriSoil | str]] = None
-    owner: Optional[str] = None
-    relatedSource: Optional[List[str]] = None
-    seeAlso: Optional[List[str]] = None
-    source: Optional[List[str]] = None
+    agroVocConcept: Optional[Union[Property, Relationship]] = None
+    alternateName: Optional[Property] = None
+    dataProvider: Optional[Property] = None
+    dataCreated: Optional[Property] = None
+    dateModified: Optional[Property] = None
+    description: Optional[Property] = None
+    plantingFrom: Optional[Property] = None
+    harvestingInterval: Optional[Property] = None
+    hasAgriFertilizer: Optional[Relationship] = None  # ??
+    hasAgriPest: Optional[Relationship] = None
+    hasAgriSoil: Optional[Relationship] = None
+    owner: Optional[Property] = None
+    relatedSource: Optional[Property] = None
+    seeAlso: Optional[Property] = None
+    source: Optional[Property] = None

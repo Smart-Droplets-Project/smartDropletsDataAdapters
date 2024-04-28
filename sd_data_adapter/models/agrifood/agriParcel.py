@@ -1,14 +1,12 @@
+import uuid
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import Optional
 
-import AgriCrop, AgriSoil
-from sd_data_adapter.models.util import Address
-from sd_data_adapter.models.util.Parcel import CropStatus, ProductCategory, SoilTextureType
-from sd_data_adapter.models.util.Operation import IrrigationType
+from sd_data_adapter.models import Property, SmartDataModel, GeoProperty, Relationship
 
 
 @dataclass
-class AgriParcel:
+class AgriParcel(SmartDataModel):
     """
 
     Class AgriParcel
@@ -49,33 +47,34 @@ class AgriParcel:
     - source (Optional[List[str]]): The sources of the parcel.
 
     """
-    id: int
-    type: str
-    location: object
-    area: int
-    hasAgriCrop: list[AgriCrop]
 
-    address: Optional[Address] = None
-    alternateName: Optional[str] = None
-    areaServed: Optional[int] = None
-    belongsTo: Optional[str] = None
-    category: Optional[List[ProductCategory]] = None
-    cropStatus: Optional[CropStatus] = None
-    dataProvider: Optional[str] = None
-    dataCreated: Optional[str] = None
-    dateModified: Optional[str] = None
-    description: Optional[str] = None
-    hasAgriParcelChildren: Optional[List['AgriParcel']] | Optional[List[str]] = None
-    hasAgriParcelParent: Optional['AgriParcel'] | Optional[str] = None
-    hasAgriSoil: Optional[List[AgriSoil]] | Optional[List[str]] = None
-    hasAgriQualityObserved: Optional[List[object]] | Optional[List[str]] = None
-    hasDevices: Optional[List[object]] | Optional[List[str]] = None
-    irrigationSystemType: Optional[IrrigationType] = None
-    lastPlantedAt: Optional[str] = None
-    name: Optional[str] = None
-    ownedBy: Optional[str] = None
-    owner: Optional[List[str]] = None
-    relatedSource: Optional[List[str]] = None
-    seeAlso: Optional[List[str]] = None
-    soilTextureType: Optional[List[SoilTextureType]] = None
-    source: Optional[List[str]] = None
+    location: GeoProperty
+    area: Property
+    hasAgriCrop: Relationship
+    id: Property = str(uuid.uuid4())
+    type: Property = 'AgriParcel'
+
+    address: Optional[Property] = None
+    alternateName: Optional[Property] = None
+    areaServed: Optional[Property] = None
+    belongsTo: Optional[Relationship] = None
+    category: Optional[Property] = None
+    cropStatus: Optional[Property] = None
+    dataProvider: Optional[Property] = None
+    dataCreated: Optional[Property] = None
+    dateModified: Optional[Property] = None
+    description: Optional[Property] = None
+    hasAgriParcelChildren: Optional[Relationship] = None
+    hasAgriParcelParent: Optional[Relationship] = None
+    hasAgriSoil: Optional[Relationship] = None
+    hasAgriQualityObserved: Optional[Relationship] = None
+    hasDevices: Optional[Property] = None
+    irrigationSystemType: Optional[Property] = None
+    lastPlantedAt: Optional[Property] = None
+    name: Optional[Property] = None
+    ownedBy: Optional[Relationship] = None
+    owner: Optional[Property] = None
+    relatedSource: Optional[Property] = None
+    seeAlso: Optional[Property] = None
+    soilTextureType: Optional[Property] = None
+    source: Optional[Property] = None

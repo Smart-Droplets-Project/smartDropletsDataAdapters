@@ -1,13 +1,12 @@
+import uuid
 from dataclasses import dataclass
 from typing import Optional, List
 
-from sd_data_adapter.models.agrifood.AgriParcel import AgriParcel
-from sd_data_adapter.models.util.Address import Address
-from sd_data_adapter.models.util.ContactPoint import ContactPoint
+from sd_data_adapter.models import SmartDataModel, Property, Relationship, GeoProperty
 
 
 @dataclass
-class AgriFarm:
+class AgriFarm(SmartDataModel):
     """
 
     The `AgriFarm` class represents a farm in the agricultural industry.
@@ -37,22 +36,23 @@ class AgriFarm:
     """
 
 
-    id: str
-    type: str
+    type: Property = 'AgriFarm'
+    id: Property = str(uuid.uuid4())
 
-    address: Optional[List[Address]] = None
-    alternateName: Optional[str] = None
-    areaServed: Optional[str] = None
-    contactPoint: Optional[ContactPoint] = None
-    dataProvider: Optional[str] = None
-    dateCreated: Optional[str] = None
-    dateModified: Optional[str] = None
-    description: Optional[str] = None
-    hasAgriParcel: Optional[List[AgriParcel | str]] = None
-    hasBuilding: Optional[List[object]] = None
-    landLocation: Optional[object] = None
-    location: Optional[object] = None
-    ownedBy: Optional[str] = None
-    relatedSource: Optional[List[str]] = None
-    seeAlso: Optional[List[str]] = None
-    source: Optional[List[str]] = None
+    address: Optional[Property] = None
+    alternateName: Optional[Property] = None
+    areaServed: Optional[Property] = None
+    contactPoint: Optional[Property] = None
+    dataProvider: Optional[Property] = None
+    dateCreated: Optional[Property] = None
+    dateModified: Optional[Property] = None
+    description: Optional[Property] = None
+    hasAgriParcel: Optional[Relationship] = None
+    hasBuilding: Optional[Relationship] = None
+    landLocation: Optional[GeoProperty] = None
+    location: Optional[GeoProperty] = None
+    ownedBy: Optional[Relationship] = None
+    owner: Optional[Property] = None
+    relatedSource: Optional[Property] = None
+    seeAlso: Optional[Property] = None
+    source: Optional[Property] = None

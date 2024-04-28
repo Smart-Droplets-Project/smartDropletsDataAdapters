@@ -1,6 +1,9 @@
+import uuid
 from dataclasses import dataclass
-from typing import Optional, List
-from sd_data_adapter.models.agrifood.AgriProductType import AgriProductType
+from typing import Optional, List, Union
+
+from sd_data_adapter.models import Property, Relationship
+from sd_data_adapter.models.agrifood.agriProductType import AgriProductType
 
 
 @dataclass
@@ -28,19 +31,19 @@ class AgriSoil:
 
     """
 
-    id: str
-    type: str
-    name: str
+    name: Property
+    id: Property = str(uuid.uuid4())
+    type: Property = 'AgriSoil'
 
-    agroVocConcept: Optional[str] = None
-    alternateName: Optional[str] = None
-    dataProvider: Optional[str] = None
-    dataCreated: Optional[str] = None
-    dateModified: Optional[str] = None
-    description: Optional[str] = None
-    hasAgriProductType: Optional[List[AgriProductType]] | Optional[List[str]] = None
-    owner: Optional[str] = None
-    relatedSource: Optional[List[str]] = None
-    seeAlso: Optional[List[str]] = None
-    source: Optional[List[str]] = None
+    agroVocConcept: Optional[Union[Property, Relationship]] = None
+    alternateName: Optional[Property] = None
+    dataProvider: Optional[Property] = None
+    dataCreated: Optional[Property] = None
+    dateModified: Optional[Property] = None
+    description: Optional[Property] = None
+    hasAgriProductType: Optional[Relationship] = None
+    owner: Optional[Property] = None
+    relatedSource: Optional[Property] = None
+    seeAlso: Optional[Property] = None
+    source: Optional[Property] = None
 

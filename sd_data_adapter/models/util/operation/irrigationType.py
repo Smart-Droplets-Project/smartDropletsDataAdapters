@@ -1,7 +1,9 @@
 from enum import Enum
 
+from sd_data_adapter.models import Util
 
-class IrrigationType(Enum):
+
+class IrrigationType(Util, Enum):
     """
 
     This class represents the different types of irrigation methods.

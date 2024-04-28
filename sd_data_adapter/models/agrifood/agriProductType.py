@@ -1,6 +1,8 @@
+import uuid
 from dataclasses import dataclass
-from typing import Optional, List
-from sd_data_adapter.models.util.Parcel import ProductCategory
+from typing import Optional, List, Union
+
+from sd_data_adapter.models import Property, Relationship
 
 
 @dataclass
@@ -33,21 +35,21 @@ class AgriProductType:
         source (Optional[List[str]]): List of primary sources of the product type.
     """
 
-    id: str
-    type: str
-    name: str
-    root: bool
+    name: Property
+    root: Property
+    id: Property = str(uuid.uuid4())
+    type: Property = 'AgriProductType'
 
-    agroVocConcept: Optional[str] = None
-    alternateName: Optional[str] = None
-    category: Optional[List[ProductCategory]] = None
-    dataProvider: Optional[str] = None
-    dataCreated: Optional[str] = None
-    dateModified: Optional[str] = None
-    description: Optional[str] = None
-    hasAgriProductTypeChildren: Optional[List['AgriProductType']] | Optional[List[str]] = None
-    hasAgriProductTypeParent: Optional['AgriProductType'] | Optional[str] = None
-    owner: Optional[str] = None
-    relatedSource: Optional[List[str]] = None
-    seeAlso: Optional[List[str]] = None
-    source: Optional[List[str]] = None
+    agroVocConcept: Optional[Union[Property, Relationship]] = None
+    alternateName: Optional[Property] = None
+    category: Optional[Property] = None
+    dataProvider: Optional[Property] = None
+    dataCreated: Optional[Property] = None
+    dateModified: Optional[Property] = None
+    description: Optional[Property] = None
+    hasAgriProductTypeChildren: Optional[Relationship] = None
+    hasAgriProductTypeParent: Optional[Relationship] = None
+    owner: Optional[Property] = None
+    relatedSource: Optional[Property] = None
+    seeAlso: Optional[Property] = None
+    source: Optional[Property] = None
