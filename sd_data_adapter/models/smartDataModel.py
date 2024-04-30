@@ -38,7 +38,19 @@ def to_ngsi_ld(obj: SmartDataModel):
     return entity
 
 
-def to_object(entity: Entity):
-    pass
+def to_object(entity):
+    import sd_data_adapter.models.agrifood as models
 
+    class_name = entity.type
+    model_class = getattr(models, class_name)
+    model = model_class()
 
+    for field in dataclasses.fields(model):
+        try:
+            try:
+                setattr(model, field.name, entity[field.name]["value"])
+            except:
+                setattr(model, field.name, entity[field.name])
+        except:
+            pass
+    return model
