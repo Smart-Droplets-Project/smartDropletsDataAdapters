@@ -44,10 +44,9 @@ class AgriParcelOperation(SmartDataModel):
 
     """
 
-    hasAgriParcel: Relationship
-    plannedStartAt: Property
-    plannedEndAt: Property
-    id: Property = str(uuid.uuid4())
+    hasAgriParcel: Relationship = None
+    plannedStartAt: Property = None
+    plannedEndAt: Property = None
     type: Property = 'AgriParcelOperation'
 
     alternateName: Optional[Property] = None

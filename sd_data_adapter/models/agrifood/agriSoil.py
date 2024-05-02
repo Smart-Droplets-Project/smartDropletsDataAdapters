@@ -1,13 +1,12 @@
-import uuid
 from dataclasses import dataclass
-from typing import Optional, List, Union
+from dataclasses import dataclass
+from typing import Optional, Union
 
-from sd_data_adapter.models import Property, Relationship
-from sd_data_adapter.models.agrifood.agriProductType import AgriProductType
+from sd_data_adapter.models import Property, Relationship, SmartDataModel
 
 
 @dataclass
-class AgriSoil:
+class AgriSoil(SmartDataModel):
     """
     Class representing an agricultural soil.
 
@@ -31,8 +30,7 @@ class AgriSoil:
 
     """
 
-    name: Property
-    id: Property = str(uuid.uuid4())
+    name: Property = None
     type: Property = 'AgriSoil'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
@@ -46,4 +44,3 @@ class AgriSoil:
     relatedSource: Optional[Property] = None
     seeAlso: Optional[Property] = None
     source: Optional[Property] = None
-

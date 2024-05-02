@@ -1,6 +1,7 @@
 import dataclasses
+import uuid
 from types import NoneType
-from typing import Union, List
+from typing import Union, List, Optional
 
 from geojson import LineString, Point, Polygon, MultiPoint, MultiLineString, MultiPolygon
 from ngsildclient import Entity
@@ -8,7 +9,11 @@ from ngsildclient import Entity
 
 @dataclasses.dataclass
 class SmartDataModel:
-    pass
+    id: Optional[str] = str(uuid.uuid4())
+
+
+    def __post_init__(self):
+        self.type = self.__class__.__name__
 
 
 class Util:

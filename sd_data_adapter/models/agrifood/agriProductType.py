@@ -1,12 +1,12 @@
-import uuid
 from dataclasses import dataclass
-from typing import Optional, List, Union
+from dataclasses import dataclass
+from typing import Optional, Union
 
-from sd_data_adapter.models import Property, Relationship
+from sd_data_adapter.models import Property, Relationship, SmartDataModel
 
 
 @dataclass
-class AgriProductType:
+class AgriProductType(SmartDataModel):
     """
     Class: AgriProductType
 
@@ -35,9 +35,8 @@ class AgriProductType:
         source (Optional[List[str]]): List of primary sources of the product type.
     """
 
-    name: Property
-    root: Property
-    id: Property = str(uuid.uuid4())
+    name: Property = None
+    root: Property = None
     type: Property = 'AgriProductType'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None

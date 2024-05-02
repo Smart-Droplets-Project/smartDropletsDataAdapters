@@ -1,4 +1,3 @@
-import uuid
 from dataclasses import dataclass
 from typing import Optional, Union
 
@@ -29,8 +28,7 @@ class AgriPest(SmartDataModel):
         source (Optional[List[str]], default=None): List of sources of the pest.
 
     """
-    name: Property
-    id: Property = str(uuid.uuid4())
+    name: Property = None
     type: Property = 'AgriPest'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
