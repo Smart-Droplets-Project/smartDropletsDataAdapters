@@ -10,7 +10,7 @@ from ngsildclient import Entity
 @dataclasses.dataclass
 class SmartDataModel:
     id: Optional[str] = str(uuid.uuid4())
-
+    type: str = "SmartDataModel"
 
     def __post_init__(self):
         self.type = self.__class__.__name__

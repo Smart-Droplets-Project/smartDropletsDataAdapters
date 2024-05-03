@@ -29,7 +29,6 @@ class AgriPest(AgriFood):
 
     """
     name: Property = None
-    type: Property = 'AgriPest'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None

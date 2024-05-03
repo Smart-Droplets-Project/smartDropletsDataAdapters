@@ -46,7 +46,6 @@ class AgriParcelOperation(AgriFood):
     hasAgriParcel: Relationship = None
     plannedStartAt: Property = None
     plannedEndAt: Property = None
-    type: Property = 'AgriParcelOperation'
 
     alternateName: Optional[Property] = None
     dataProvider: Optional[Property] = None

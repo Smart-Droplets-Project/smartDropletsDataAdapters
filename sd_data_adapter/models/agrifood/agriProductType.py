@@ -36,7 +36,6 @@ class AgriProductType(AgriFood):
 
     name: Property = None
     root: Property = None
-    type: Property = 'AgriProductType'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None

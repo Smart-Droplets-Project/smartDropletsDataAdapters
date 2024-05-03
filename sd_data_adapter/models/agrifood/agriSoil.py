@@ -30,7 +30,6 @@ class AgriSoil(AgriFood):
     """
 
     name: Property = None
-    type: Property = 'AgriSoil'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None

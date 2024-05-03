@@ -35,7 +35,6 @@ class AgriCrop(AgriFood):
     """
 
     name: Property = None
-    type: Property = 'AgriCrop'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None

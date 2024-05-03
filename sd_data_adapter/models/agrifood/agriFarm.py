@@ -34,8 +34,6 @@ class AgriFarm(AgriFood):
 
     """
 
-    type: Property = 'AgriFarm'
-
     address: Optional[Property] = None
     alternateName: Optional[Property] = None
     areaServed: Optional[Property] = None
