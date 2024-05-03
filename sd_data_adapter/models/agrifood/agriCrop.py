@@ -1,12 +1,11 @@
-import uuid
 from dataclasses import dataclass
 from typing import Optional, Union
 
-from sd_data_adapter.models import SmartDataModel, Property, Relationship
+from sd_data_adapter.models import Property, Relationship, AgriFood
 
 
 @dataclass
-class AgriCrop(SmartDataModel):
+class AgriCrop(AgriFood):
     """
     Class: AgriCrop
 
