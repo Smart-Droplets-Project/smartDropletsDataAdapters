@@ -50,9 +50,13 @@ ngsi_ld_entity = encode_entity(entity)
 decoded_entity = decode_entity(ngsi_ld_entity)
 ```
 
-## Contributing
+## Test
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on the GitHub repository.
+In order to run tests, use the unittest Python module like so:
+
+```bash
+python -m unittest discover -s test/
+```
 
 ## License
 
