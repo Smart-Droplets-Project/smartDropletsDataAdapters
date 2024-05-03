@@ -1,6 +1,7 @@
 import dataclasses
+import uuid
 from types import NoneType
-from typing import Union, List
+from typing import Union, List, Optional
 
 from geojson import LineString, Point, Polygon, MultiPoint, MultiLineString, MultiPolygon
 from ngsildclient import Entity
@@ -8,7 +9,11 @@ from ngsildclient import Entity
 
 @dataclasses.dataclass
 class SmartDataModel:
-    pass
+    id: Optional[str] = str(uuid.uuid4())
+
+
+    def __post_init__(self):
+        self.type = self.__class__.__name__
 
 
 class Util:
@@ -38,7 +43,19 @@ def to_ngsi_ld(obj: SmartDataModel):
     return entity
 
 
-def to_object(entity: Entity):
-    pass
+def to_object(entity):
+    import sd_data_adapter.models.agrifood as models
 
+    class_name = entity.type
+    model_class = getattr(models, class_name)
+    model = model_class()
 
+    for field in dataclasses.fields(model):
+        try:
+            try:
+                setattr(model, field.name, entity[field.name]["value"])
+            except:
+                setattr(model, field.name, entity[field.name])
+        except:
+            pass
+    return model

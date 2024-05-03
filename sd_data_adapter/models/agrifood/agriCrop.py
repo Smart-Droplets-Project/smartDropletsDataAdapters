@@ -35,8 +35,7 @@ class AgriCrop(SmartDataModel):
         source: Optional[List[str]] - The source(s) of the crop.
     """
 
-    name: Property
-    id: Property = str(uuid.uuid4())
+    name: Property = None
     type: Property = 'AgriCrop'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None

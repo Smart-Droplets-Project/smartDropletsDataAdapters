@@ -48,10 +48,9 @@ class AgriParcel(SmartDataModel):
 
     """
 
-    location: GeoProperty
-    area: Property
-    hasAgriCrop: Relationship
-    id: Property = str(uuid.uuid4())
+    location: GeoProperty = None
+    area: Property = 0
+    hasAgriCrop: Relationship = None
     type: Property = 'AgriParcel'
 
     address: Optional[Property] = None

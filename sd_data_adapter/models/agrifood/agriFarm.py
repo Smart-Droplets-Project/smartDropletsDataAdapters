@@ -37,7 +37,6 @@ class AgriFarm(SmartDataModel):
 
 
     type: Property = 'AgriFarm'
-    id: Property = str(uuid.uuid4())
 
     address: Optional[Property] = None
     alternateName: Optional[Property] = None
