@@ -10,11 +10,14 @@ from ngsildclient import Entity
 @dataclasses.dataclass
 class SmartDataModel:
     id: Optional[str] = str(uuid.uuid4())
-
+    type: str = "SmartDataModel"
 
     def __post_init__(self):
         self.type = self.__class__.__name__
 
+@dataclasses.dataclass
+class AgriFood(SmartDataModel):
+    ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld"
 
 class Util:
     pass
@@ -27,7 +30,7 @@ GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, Mul
 
 def to_ngsi_ld(obj: SmartDataModel):
     entity = Entity(obj.type, f"urn:ngsi-ld:{obj.type}:{obj.id}-id")
-
+    entity.context = obj.ctx
     for field in dataclasses.fields(obj):
         field_value = getattr(obj, field.name)
         if field_value is None or field.name == "id" or field.name == "type":
