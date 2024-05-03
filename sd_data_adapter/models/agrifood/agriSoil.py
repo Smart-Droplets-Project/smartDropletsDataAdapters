@@ -1,12 +1,11 @@
 from dataclasses import dataclass
-from dataclasses import dataclass
 from typing import Optional, Union
 
-from sd_data_adapter.models import Property, Relationship, SmartDataModel
+from sd_data_adapter.models import Property, Relationship, AgriFood
 
 
 @dataclass
-class AgriSoil(SmartDataModel):
+class AgriSoil(AgriFood):
     """
     Class representing an agricultural soil.
 
@@ -31,7 +30,6 @@ class AgriSoil(SmartDataModel):
     """
 
     name: Property = None
-    type: Property = 'AgriSoil'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None

@@ -1,12 +1,11 @@
-import uuid
 from dataclasses import dataclass
 from typing import Optional
 
-from sd_data_adapter.models import Property, SmartDataModel, GeoProperty, Relationship
+from sd_data_adapter.models import Property, GeoProperty, Relationship, AgriFood
 
 
 @dataclass
-class AgriParcel(SmartDataModel):
+class AgriParcel(AgriFood):
     """
 
     Class AgriParcel
@@ -51,7 +50,6 @@ class AgriParcel(SmartDataModel):
     location: GeoProperty = None
     area: Property = 0
     hasAgriCrop: Relationship = None
-    type: Property = 'AgriParcel'
 
     address: Optional[Property] = None
     alternateName: Optional[Property] = None

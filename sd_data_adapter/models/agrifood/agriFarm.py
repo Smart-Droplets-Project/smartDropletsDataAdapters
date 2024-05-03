@@ -1,12 +1,11 @@
-import uuid
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Optional
 
-from sd_data_adapter.models import SmartDataModel, Property, Relationship, GeoProperty
+from sd_data_adapter.models import Property, Relationship, GeoProperty, AgriFood
 
 
 @dataclass
-class AgriFarm(SmartDataModel):
+class AgriFarm(AgriFood):
     """
 
     The `AgriFarm` class represents a farm in the agricultural industry.
@@ -34,9 +33,6 @@ class AgriFarm(SmartDataModel):
         source (Optional[List[str]]): A list of sources used to code the producer or rule for creating the display string. (Default: None)
 
     """
-
-
-    type: Property = 'AgriFarm'
 
     address: Optional[Property] = None
     alternateName: Optional[Property] = None

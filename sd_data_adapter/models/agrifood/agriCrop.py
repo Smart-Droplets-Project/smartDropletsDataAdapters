@@ -1,12 +1,11 @@
-import uuid
 from dataclasses import dataclass
 from typing import Optional, Union
 
-from sd_data_adapter.models import SmartDataModel, Property, Relationship
+from sd_data_adapter.models import Property, Relationship, AgriFood
 
 
 @dataclass
-class AgriCrop(SmartDataModel):
+class AgriCrop(AgriFood):
     """
     Class: AgriCrop
 
@@ -36,7 +35,6 @@ class AgriCrop(SmartDataModel):
     """
 
     name: Property = None
-    type: Property = 'AgriCrop'
 
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None

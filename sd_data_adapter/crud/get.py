@@ -6,10 +6,9 @@ def get(id: str):
     if id is None or len(id) == 0:
         return None
 
-    client = Client()
-    entity = client.get(id)
-    entity.pprint()
-    print(to_object(entity))
-    client.close()
+    with Client() as client:
+        entity = client.get(id)
 
-get("urn:ngsi-ld:AgriFarm:4d6857e5-e025-4654-ad59-f665aa8076b9-id")
+    return to_object(entity)
+
+print(get("urn:ngsi-ld:AgriFarm:4d6857e5-e025-4654-ad59-f665aa8076b9-id"))

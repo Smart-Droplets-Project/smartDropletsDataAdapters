@@ -1,12 +1,11 @@
-import uuid
 from dataclasses import dataclass
 from typing import Optional
 
-from sd_data_adapter.models import SmartDataModel, Relationship, Property
+from sd_data_adapter.models import Relationship, Property, AgriFood
 
 
 @dataclass
-class AgriParcelOperation(SmartDataModel):
+class AgriParcelOperation(AgriFood):
     """
 
     This class represents an agricultural parcel operation.
@@ -47,7 +46,6 @@ class AgriParcelOperation(SmartDataModel):
     hasAgriParcel: Relationship = None
     plannedStartAt: Property = None
     plannedEndAt: Property = None
-    type: Property = 'AgriParcelOperation'
 
     alternateName: Optional[Property] = None
     dataProvider: Optional[Property] = None
