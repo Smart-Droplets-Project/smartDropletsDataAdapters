@@ -11,4 +11,5 @@ def get(id: str):
 
     return to_object(entity)
 
-print(get("urn:ngsi-ld:AgriFarm:4d6857e5-e025-4654-ad59-f665aa8076b9-id"))
+if __name__ == '__main__':
+    print(get("urn:ngsi-ld:AgriFarm:4d6857e5-e025-4654-ad59-f665aa8076b9-id"))
