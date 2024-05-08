@@ -2,7 +2,18 @@ from ngsildclient import Client
 from sd_data_adapter.models import to_object
 
 
-def get_by_query(params: dict = None):
+def get_by_id(id: str):
+    if id is None or len(id) == 0:
+        return None
+
+    with Client() as client:
+        entity = client.get(id)
+        entity.pprint()
+
+    return to_object(entity)
+
+
+def search(params: dict = None):
     with Client() as client:
         try:
             client.query_generator()
@@ -21,4 +32,4 @@ if __name__ == '__main__':
         'type': 'AgriFarm',
         'q': 'description=="Small american farm in Texas"'
     }
-    print(get_by_query(query_params))
+    print(search(query_params))
