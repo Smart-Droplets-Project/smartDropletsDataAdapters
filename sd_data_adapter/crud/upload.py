@@ -16,5 +16,5 @@ def upload(obj: SmartDataModel):
 
 
 if __name__ == "__main__":
-    agriCrop = AgriFarm(hasAgriParcel=["urn:ngsi-ld:AgriParcel:e27dbb51-05d0-4457-b461-b0d89692c69e-id"], description="Small american farm in Texas")
+    agriCrop = AgriFarm(hasAgriParcel=["urn:ngsi-ld:AgriParcel:e27dbb51-05d0-4457-b461-b0d89692c69e-id"], description="Small")
     upload(agriCrop)
