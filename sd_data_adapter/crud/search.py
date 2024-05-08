@@ -25,11 +25,3 @@ def search(params: dict = None):
         except Exception as e:
             print("ERROR: ", str(e))
     return None
-
-
-if __name__ == '__main__':
-    query_params = {
-        'type': 'AgriFarm',
-        'q': 'description=="Small american farm in Texas"'
-    }
-    print(search(query_params))
