@@ -9,11 +9,14 @@ from ngsildclient import Entity
 
 @dataclasses.dataclass
 class SmartDataModel:
-    id: Optional[str] = str(uuid.uuid4())
+    id: Optional[Union[str, uuid.UUID]] = uuid.uuid4()
     type: str = "SmartDataModel"
 
     def __post_init__(self):
         self.type = self.__class__.__name__
+        if isinstance(self.id, uuid.UUID):
+            self.id = f"urn:ngsi-ld:{self.type}:{self.id}-id"
+
 
 @dataclasses.dataclass
 class AgriFood(SmartDataModel):
@@ -29,7 +32,7 @@ GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, Mul
 
 
 def to_ngsi_ld(obj: SmartDataModel):
-    entity = Entity(obj.type, f"urn:ngsi-ld:{obj.type}:{obj.id}-id")
+    entity = Entity(obj.type, obj.id)
     entity.context = obj.ctx
     for field in dataclasses.fields(obj):
         field_value = getattr(obj, field.name)
@@ -49,7 +52,7 @@ def to_ngsi_ld(obj: SmartDataModel):
 def to_object(entity):
     import sd_data_adapter.models.agrifood as models
 
-    class_name = entity.type
+    class_name = entity.type.split("/")[-1]
     model_class = getattr(models, class_name)
     model = model_class()
 
