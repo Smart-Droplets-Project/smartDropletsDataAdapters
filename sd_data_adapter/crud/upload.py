@@ -1,6 +1,6 @@
 from ngsildclient import Client
 
-from sd_data_adapter.models import to_ngsi_ld, SmartDataModel
+from sd_data_adapter.models import to_ngsi_ld, SmartDataModel, to_object
 
 
 def upload(obj: SmartDataModel):
@@ -11,4 +11,4 @@ def upload(obj: SmartDataModel):
         entity = to_ngsi_ld(obj)
         entity.pprint()
         print(f"Saving {entity.id} !")
-        return client.create(entity)
+        return to_object(client.create(entity))

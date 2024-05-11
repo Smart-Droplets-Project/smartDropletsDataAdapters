@@ -17,4 +17,4 @@ if __name__ == '__main__':
         dateModified=str(datetime.datetime.now())
     )
 
-    upload(model)
+    print(upload(model))

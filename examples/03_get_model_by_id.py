@@ -5,5 +5,5 @@ from sd_data_adapter.crud import get_by_id
 # It returns an instance of SmartDataModel subclass
 
 if __name__ == '__main__':
-    model = get_by_id("urn:ngsi-ld:AgriFarm:1cece927-99c7-4fdc-a555-eb4b1f2cdea9-id")
+    model = get_by_id("urn:ngsi-ld:AgriFarm:6061c51d-9a9f-428b-900c-759b985868db-id")
     print(model)
