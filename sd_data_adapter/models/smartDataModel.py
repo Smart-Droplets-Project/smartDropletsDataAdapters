@@ -22,6 +22,7 @@ class SmartDataModel:
 class AgriFood(SmartDataModel):
     ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld"
 
+
 class Util:
     pass
 
@@ -49,19 +50,21 @@ def to_ngsi_ld(obj: SmartDataModel):
     return entity
 
 
-def to_object(entity):
+def to_object(entity: Entity):
     import sd_data_adapter.models.agrifood as models
 
     class_name = entity.type.split("/")[-1]
     model_class = getattr(models, class_name)
     model = model_class()
-
-    for field in dataclasses.fields(model):
+    entity_dict = entity.to_dict()
+    for key in entity_dict:
+        new_key = key.split("/")[-1]
         try:
             try:
-                setattr(model, field.name, entity[field.name]["value"])
+                setattr(model, new_key, entity_dict[key]["value"])
             except:
-                setattr(model, field.name, entity[field.name])
+                setattr(model, new_key, entity_dict[key])
         except:
-            pass
+            continue
+
     return model

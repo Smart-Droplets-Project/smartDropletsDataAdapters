@@ -1,14 +1,13 @@
-from ngsildclient import Client
-
-from sd_data_adapter.models import to_ngsi_ld, SmartDataModel
+from sd_data_adapter.client import DAClient
+from sd_data_adapter.models import to_ngsi_ld, SmartDataModel, to_object
 
 
 def upload(obj: SmartDataModel):
     if obj is None:
         return None
 
-    with Client() as client:
+    with DAClient.get_instance() as client:
         entity = to_ngsi_ld(obj)
         entity.pprint()
         print(f"Saving {entity.id} !")
-        return client.create(entity)
+        return to_object(client.create(entity))
