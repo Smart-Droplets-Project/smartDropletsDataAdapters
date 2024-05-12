@@ -33,6 +33,9 @@ GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, Mul
 
 
 def to_ngsi_ld(obj: SmartDataModel):
+    if obj is None:
+        return None
+
     entity = Entity(obj.type, obj.id)
     entity.context = obj.ctx
     for field in dataclasses.fields(obj):
@@ -51,6 +54,9 @@ def to_ngsi_ld(obj: SmartDataModel):
 
 
 def to_object(entity: Entity):
+    if entity is None:
+        return None
+
     import sd_data_adapter.models.agrifood as models
 
     class_name = entity.type.split("/")[-1]
