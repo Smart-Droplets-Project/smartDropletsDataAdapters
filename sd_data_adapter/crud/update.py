@@ -10,4 +10,4 @@ def update(obj: SmartDataModel):
         entity = to_ngsi_ld(obj)
         entity.pprint()
         print(f"Updating {entity.id} !")
-        return to_object(client.update(entity))
+        return client.update(entity)

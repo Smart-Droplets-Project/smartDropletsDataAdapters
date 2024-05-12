@@ -10,4 +10,4 @@ def upload(obj: SmartDataModel):
         entity = to_ngsi_ld(obj)
         entity.pprint()
         print(f"Saving {entity.id} !")
-        return to_object(client.create(entity))
+        return client.create(entity)
