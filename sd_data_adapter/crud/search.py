@@ -17,7 +17,7 @@ def search(params: dict = None):
     with DAClient.get_instance() as client:
         try:
             client.query_generator()
-            response = client.query_all(**params)
+            response = client.query(**params)
             res_to_obj = []
             for res in response:
                 res_to_obj.append(to_object(res))
