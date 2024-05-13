@@ -6,7 +6,7 @@
 """
 
 import datetime
-import sd_data_adapter.models.agrifood as models
+import sd_data_adapter.models.agri_food as models
 
 
 if __name__ == '__main__':

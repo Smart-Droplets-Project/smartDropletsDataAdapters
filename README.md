@@ -79,7 +79,7 @@ Run any example, for instane _01_create_model_.
 ```py
 import datetime
 
-import sd_data_adapter.models.agrifood as models
+import sd_data_adapter.models.agri_food as models
 from sd_data_adapter.client import DAClient
 from sd_data_adapter.api import upload
 
