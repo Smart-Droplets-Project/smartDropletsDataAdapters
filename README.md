@@ -81,7 +81,7 @@ import datetime
 
 import sd_data_adapter.models.agrifood as models
 from sd_data_adapter.client import DAClient
-from sd_data_adapter.crud import upload
+from sd_data_adapter.api import upload
 
 # Set up Context Broker client
 # In this case, no host/port have been provided,

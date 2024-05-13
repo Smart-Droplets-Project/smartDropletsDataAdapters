@@ -23,6 +23,16 @@ class AgriFood(SmartDataModel):
     ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld"
 
 
+@dataclasses.dataclass
+class Devices(SmartDataModel):
+    ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.Device/master/context.jsonld"
+
+
+@dataclasses.dataclass
+class AutonomousMobileRobot(SmartDataModel):
+    ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.AutonomousMobileRobot/master/context.jsonld"
+
+
 class Util:
     pass
 

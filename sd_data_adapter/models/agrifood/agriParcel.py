@@ -34,7 +34,7 @@ class AgriParcel(AgriFood):
     - hasAgriParcelParent (Optional[str]): The parent parcel of the parcel.
     - hasAgriSoil (Optional[List[AgriSoil]]): The list of agricultural soils associated with the parcel.
     - hasAgriQualityObserved (Optional[List[object]]): The list of observed agricultural quality for the parcel. [Note: The type of object is not specified. Please refer to the specific implementation for details.]
-    - hasDevices (Optional[List[object]]): The list of devices associated with the parcel. [Note: The type of object is not specified. Please refer to the specific implementation for details.]
+    - hasDevices (Optional[List[object]]): The list of device associated with the parcel. [Note: The type of object is not specified. Please refer to the specific implementation for details.]
     - irrigationSystemType (Optional[IrrigationType]): The type of irrigation system used in the parcel.
     - lastPlantedAt (Optional[str]): The date when the last planting was done in the parcel.
     - name (Optional[str]): The name of the parcel.
