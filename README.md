@@ -12,11 +12,42 @@ Provides functions for handling entities such as Farms, Parcels, Crops, CommandM
 
 ## Installation
 
+There are 2 options for including the library into your project:
+
+1. from the project's FTP link (TO BE DEFINED);
+1. build & install locally.
+
+### Install from FTP
+
 To install the Smart Droplets Data Adapter Library, you can use pip:
 
 ```bash
 pip install sd_data_adapter
 ```
+
+### Install Locally
+
+## Running Examples
+
+The _examples/_ directory contains examples of common use cases such as packaging information into the Smart Droplets data classes, pushing entities to the Orion Context Broker, etc.
+
+In order to run examples, clone the repository and run the following steps.
+
+First, create a virtual environment where you can install the project dependencies.
+
+> python -m venv venv/
+
+Activate the virtual environment.
+
+> source venv/bin/activate
+
+Install project dependencies into the environment.
+
+> python setup.py install
+
+Run any example, for instane _01_create_model_.
+
+> python -m examples.01_create_model
 
 ## Dependencies
 
@@ -28,26 +59,26 @@ pip install sd_data_adapter
 TODO: Insert real code snippet
 
 ```py
-from horizon_ngsi_ld import encode_entity, decode_entity
+import datetime
 
-# Example entity
-entity = {
-    "id": "urn:ngsi-ld:Farm:001",
-    "type": "Farm",
-    "name": {
-        "value": "Example Farm"
-    },
-    "location": {
-        "type": "Point",
-        "coordinates": [40.7128, -74.0060]
-    }
-}
+import sd_data_adapter.models.agrifood as models
+from sd_data_adapter.client import DAClient
+from sd_data_adapter.crud import upload
 
-# Encode entity to NGSI-LD format
-ngsi_ld_entity = encode_entity(entity)
+# Set up Context Broker client     
+DAClient.get_instance()
 
-# Decode NGSI-LD entity
-decoded_entity = decode_entity(ngsi_ld_entity)
+# Create Farm using data class
+model = models.AgriFarm(
+    alternateName="TexFarm",
+    description="A farm located in eastern Texas",
+    hasBuilding=["House", "Barn"],
+    dateCreated=str(datetime.datetime.now()),
+    dateModified=str(datetime.datetime.now())
+)
+
+# Upload model 
+upload(model)
 ```
 
 ## Test
