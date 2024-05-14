@@ -46,9 +46,6 @@ def to_ngsi_ld(obj: SmartDataModel):
     if not isinstance(obj, SmartDataModel):
         raise TypeError(f"Expected SmartDataModel, got {type(obj)}")
 
-    if obj is None:
-        raise ValueError("Object cannot be None")
-
     entity = Entity(obj.type, obj.id)
     entity.context = obj.ctx
     for field in dataclasses.fields(obj):
@@ -69,8 +66,6 @@ def to_ngsi_ld(obj: SmartDataModel):
 def to_object(entity: Entity):
     if not isinstance(entity, Entity):
         raise TypeError(f"Expected {Entity}, got {type(entity)}")
-    if entity is None:
-        raise ValueError("Entity cannot be None")
 
     import sd_data_adapter.models as sd
     all_model_names = ['agri_food', 'device', 'autonomous_mobile_robot']
