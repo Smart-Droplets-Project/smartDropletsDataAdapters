@@ -23,6 +23,16 @@ class AgriFood(SmartDataModel):
     ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld"
 
 
+@dataclasses.dataclass
+class Devices(SmartDataModel):
+    ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.Device/master/context.jsonld"
+
+
+@dataclasses.dataclass
+class AutonomousMobileRobot(SmartDataModel):
+    ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.AutonomousMobileRobot/master/context.jsonld"
+
+
 class Util:
     pass
 
@@ -33,6 +43,12 @@ GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, Mul
 
 
 def to_ngsi_ld(obj: SmartDataModel):
+    if not isinstance(obj, SmartDataModel):
+        raise TypeError(f"Expected SmartDataModel, got {type(obj)}")
+
+    if obj is None:
+        raise ValueError("Object cannot be None")
+
     entity = Entity(obj.type, obj.id)
     entity.context = obj.ctx
     for field in dataclasses.fields(obj):
@@ -51,10 +67,24 @@ def to_ngsi_ld(obj: SmartDataModel):
 
 
 def to_object(entity: Entity):
-    import sd_data_adapter.models.agrifood as models
+    if not isinstance(entity, Entity):
+        raise TypeError(f"Expected {Entity}, got {type(entity)}")
+    if entity is None:
+        raise ValueError("Entity cannot be None")
 
+    import sd_data_adapter.models as sd
+    all_model_names = ['agri_food', 'device', 'autonomous_mobile_robot']
     class_name = entity.type.split("/")[-1]
-    model_class = getattr(models, class_name)
+    model_class = None
+    for model_name in all_model_names:
+        model_package = getattr(sd, model_name)
+        if hasattr(model_package, class_name):
+            model_class = getattr(model_package, class_name)
+            break
+
+    if model_class is None:
+        raise Exception("Model not found")
+
     model = model_class()
     entity_dict = entity.to_dict()
     for key in entity_dict:
