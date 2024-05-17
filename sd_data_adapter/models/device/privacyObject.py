@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional, Union
 
-from sd_data_adapter.models import Devices, Property, GeoProperty, Relationship
+from .. import Devices, Property, GeoProperty, Relationship
 
 
 @dataclass

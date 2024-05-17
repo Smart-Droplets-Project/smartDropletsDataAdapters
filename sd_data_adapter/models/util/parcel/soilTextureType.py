@@ -1,6 +1,6 @@
 from enum import Enum
 
-from sd_data_adapter.models import Util
+from ... import Util
 
 
 class SoilTextureType(Util, Enum):

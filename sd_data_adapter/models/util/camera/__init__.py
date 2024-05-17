@@ -1,8 +1,11 @@
 from typing import Optional
-
-from sd_data_adapter.models import Util
 from dataclasses import dataclass
+
+from ... import Util
 from .cameraType import CameraType
+from .cameraUsage import CameraUsage
+from .deviceCategory import DeviceCategory
+from .direction import Direction
 
 
 @dataclass

@@ -2,8 +2,8 @@ from typing import Union
 
 from ngsildclient.api.batch import BatchResult
 
-from sd_data_adapter.client import DAClient
-from sd_data_adapter.models import to_ngsi_ld, SmartDataModel, to_object
+from ..client import DAClient
+from ..models import to_ngsi_ld, SmartDataModel, to_object
 
 
 def update(obj: SmartDataModel) -> Union[bool, BatchResult]:
