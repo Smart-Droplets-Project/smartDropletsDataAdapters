@@ -15,6 +15,5 @@ def update(obj: SmartDataModel) -> Union[bool, BatchResult]:
 
     with DAClient.get_instance() as client:
         entity = to_ngsi_ld(obj)
-        entity.pprint()
         print(f"Updating {entity.id} !")
         return client.update(entity)

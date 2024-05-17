@@ -15,6 +15,5 @@ def upload(obj: SmartDataModel) -> Union[bool, BatchResult]:
 
     with DAClient.get_instance() as client:
         entity = to_ngsi_ld(obj)
-        entity.pprint()
         print(f"Saving {entity.id} !")
         return client.create(entity)

@@ -13,7 +13,6 @@ def get_by_id(id: str) -> SmartDataModel | None:
 
     with DAClient.get_instance() as client:
         entity = client.get(id)
-        entity.pprint()
 
     if entity is None:
         return None
@@ -36,7 +35,7 @@ def search(params: dict = None) -> List[SmartDataModel] | None:
     with DAClient.get_instance() as client:
         try:
             client.query_generator()
-            response = client.query_all(**params)
+            response = client.query(**params)
             res_to_obj = []
             for res in response:
                 res_to_obj.append(to_object(res))
