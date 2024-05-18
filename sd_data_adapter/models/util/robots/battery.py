@@ -1,8 +1,7 @@
 import dataclasses
 from typing import Optional
 
-from . import Util
-from ... import Property
+from ... import Property, Util
 
 
 @dataclasses.dataclass

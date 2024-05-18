@@ -1,7 +1,7 @@
 from typing import List
 
-from sd_data_adapter.client import DAClient
-from sd_data_adapter.models import to_object, SmartDataModel
+from ..client import DAClient
+from ..models import to_object, SmartDataModel
 
 
 def get_by_id(id: str) -> SmartDataModel | None:
@@ -13,7 +13,6 @@ def get_by_id(id: str) -> SmartDataModel | None:
 
     with DAClient.get_instance() as client:
         entity = client.get(id)
-        entity.pprint()
 
     if entity is None:
         return None
@@ -23,7 +22,7 @@ def get_by_id(id: str) -> SmartDataModel | None:
 
 def search(params: dict = None) -> List[SmartDataModel] | None:
     allowed_params = ['ctx', 'type', 'q', 'limit', 'max']
-    if isinstance(params, dict):
+    if not isinstance(params, dict):
         raise TypeError('params must be a dict')
 
     if params is None:
@@ -36,7 +35,7 @@ def search(params: dict = None) -> List[SmartDataModel] | None:
     with DAClient.get_instance() as client:
         try:
             client.query_generator()
-            response = client.query_all(**params)
+            response = client.query(**params)
             res_to_obj = []
             for res in response:
                 res_to_obj.append(to_object(res))

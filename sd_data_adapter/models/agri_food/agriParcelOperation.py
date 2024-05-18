@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from sd_data_adapter.models import Relationship, Property, AgriFood
+from .. import Relationship, Property, AgriFood
 
 
 @dataclass

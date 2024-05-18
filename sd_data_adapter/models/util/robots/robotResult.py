@@ -1,6 +1,6 @@
 from enum import Enum
 
-from . import Util
+from ... import Util
 
 
 class RobotResult(Util, Enum):

@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from sd_data_adapter.models import AutonomousMobileRobot, Property
+from .. import AutonomousMobileRobot, Property
 
 
 @dataclass
-class StopCommandMassage(AutonomousMobileRobot):
+class StateMessage(AutonomousMobileRobot):
     """
     Class to represent a stop command message for an autonomous mobile robot.
 
