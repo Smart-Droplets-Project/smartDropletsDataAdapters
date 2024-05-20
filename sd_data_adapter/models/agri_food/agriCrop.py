@@ -39,7 +39,7 @@ class AgriCrop(AgriFood):
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     plantingFrom: Optional[Property] = None
