@@ -7,7 +7,7 @@ setup(
     author="Mihailo Ilic",
     author_email="mihailo.ilic@vizlore.com",
     packages=find_packages(
-        include=['sd_data_adapter']
+        include=['sd_data_adapter*']
     ),
     install_requires=[
         'ngsildclient'
