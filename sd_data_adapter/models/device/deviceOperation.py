@@ -15,7 +15,7 @@ class DeviceOperation(Devices):
         alternateName (Optional[Property]): An alternate name for the operation.
         areaServed (Optional[Property]): The area served by the operation.
         dataProvider (Optional[Property]): The provider of the operation's data.
-        dataCreated (Optional[Property]): The timestamp when the operation's data was created.
+        dateCreated (Optional[Property]): The timestamp when the operation's data was created.
         dateModified (Optional[Property]): The timestamp when the operation was last modified.
         description (Optional[Property]): The description of the operation.
         name (Optional[Property]): The name of the operation.
@@ -41,7 +41,7 @@ class DeviceOperation(Devices):
     alternateName: Optional[Property] = None
     areaServed: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     name: Optional[Property] = None

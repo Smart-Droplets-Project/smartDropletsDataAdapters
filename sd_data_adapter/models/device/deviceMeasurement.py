@@ -16,7 +16,7 @@ class DeviceMeasurement(Devices):
         areaServed (Optional[Property]): The area served by the device measurement.
         controlledProperty (Optional[Property]): The controlled property of the device measurement.
         dataProvider (Optional[Property]): The data provider of the device measurement.
-        dataCreated (Optional[Property]): The date when the data was created.
+        dateCreated (Optional[Property]): The date when the data was created.
         dateModified (Optional[Property]): The date when the data was last modified.
         dateObserved (Optional[Property]): The date when the measurement was observed.
         description (Optional[Property]): A description of the measurement.
@@ -40,7 +40,7 @@ class DeviceMeasurement(Devices):
     areaServed: Optional[Property] = None
     controlledProperty: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     dateObserved: Optional[Property] = None
     description: Optional[Property] = None

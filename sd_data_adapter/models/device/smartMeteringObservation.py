@@ -14,7 +14,7 @@ class SmartMeteringObservation(Devices):
         alternateName (Optional[Property]): An alternate name for the smart metering device.
         areaServed (Optional[Property]): The area served by the smart metering device.
         dataProvider (Optional[Property]): The data provider for the smart metering device.
-        dataCreated (Optional[Property]): The date when the data was created.
+        dateCreated (Optional[Property]): The date when the data was created.
         dateModified (Optional[Property]): The date when the data was last modified.
         description (Optional[Property]): A description of the smart metering device.
         name (Optional[Property]): The name of the smart metering device.
@@ -37,7 +37,7 @@ class SmartMeteringObservation(Devices):
     alternateName: Optional[Property] = None
     areaServed: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     name: Optional[Property] = None

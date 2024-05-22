@@ -16,7 +16,7 @@ class DeviceModel(Devices):
         color (Optional[Property]): An optional property representing the color of the device model.
         controlledProperty (Optional[Property]): An optional property representing the controlled property of the device model.
         dataProvider (Optional[Property]): An optional property representing the data provider of the device model.
-        dataCreated (Optional[Property]): An optional property representing the date the data for the device model was created.
+        dateCreated (Optional[Property]): An optional property representing the date the data for the device model was created.
         dateModified (Optional[Property]): An optional property representing the last modified date of the device model.
         description (Optional[Property]): An optional property representing the description of the device model.
         name (Optional[Property]): An optional property representing the name of the device model.
@@ -42,7 +42,7 @@ class DeviceModel(Devices):
     color: Optional[Property] = None
     controlledProperty: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     name: Optional[Property] = None

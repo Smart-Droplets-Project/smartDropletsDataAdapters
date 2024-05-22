@@ -27,7 +27,7 @@ class AgriParcel(AgriFood):
     - category (Optional[List[ProductCategory]]): The category of the parcel.
     - cropStatus (Optional[CropStatus]): The status of the crops in the parcel.
     - dataProvider (Optional[str]): The provider of data for the parcel.
-    - dataCreated (Optional[str]): The date when the data for the parcel was created.
+    - dateCreated (Optional[str]): The date when the data for the parcel was created.
     - dateModified (Optional[str]): The date when the data for the parcel was last modified.
     - description (Optional[str]): A description of the parcel.
     - hasAgriParcelChildren (Optional[List[AgriParcel]]): The list of child parcels associated with the parcel.
@@ -58,7 +58,7 @@ class AgriParcel(AgriFood):
     category: Optional[Property] = None
     cropStatus: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     hasAgriParcelChildren: Optional[Relationship] = None

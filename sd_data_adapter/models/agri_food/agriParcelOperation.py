@@ -20,7 +20,7 @@ class AgriParcelOperation(AgriFood):
     Optional Attributes:
     - alternateName (Optional[str]): An alternate name for the operation. (default: None)
     - dataProvider (Optional[str]): The data provider of the operation. (default: None)
-    - dataCreated (Optional[str]): The date of creation of the operation data. (default: None)
+    - dateCreated (Optional[str]): The date of creation of the operation data. (default: None)
     - dateModified (Optional[str]): The date of last modification of the operation data. (default: None)
     - description (Optional[str]): The description of the operation. (default: None)
     - startedAt (Optional[str]): The actual start date and time of the operation. (default: None)
@@ -49,7 +49,7 @@ class AgriParcelOperation(AgriFood):
 
     alternateName: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     startedAt: Optional[Property] = None
