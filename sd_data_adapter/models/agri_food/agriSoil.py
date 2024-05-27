@@ -18,7 +18,7 @@ class AgriSoil(AgriFood):
         agroVocConcept (Optional[str]), default=None): Reference to the agrovoc term associated with this pest.
         alternateName (Optional[str], default=None): Alternate name of the pest.
         dataProvider (Optional[str], default=None): The data provider of the pest.
-        dataCreated (Optional[str], default=None): The date when the pest data was created.
+        dateCreated (Optional[str], default=None): The date when the pest data was created.
         dateModified (Optional[str], default=None): The date when the pest data was last modified.
         description (Optional[str], default=None): Description of the pest.
         hasAgriProductType (Optional[List[AgriProductType] | str], default=None): List of agri product types associated with the pest.
@@ -34,7 +34,7 @@ class AgriSoil(AgriFood):
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     hasAgriProductType: Optional[Relationship] = None

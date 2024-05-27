@@ -16,7 +16,7 @@ class PrivacyObject(Devices):
         alternateName (Optional[Property]): An alternate name for the privacy object.
         areaServed (Optional[Property]): The area served by the privacy object.
         dataProvider (Optional[Property]): The provider of the data.
-        dataCreated (Optional[Property]): The date when the data was created.
+        dateCreated (Optional[Property]): The date when the data was created.
         dateModified (Optional[Property]): The date when the data was last modified.
         description (Optional[Property]): A description of the privacy object.
         name (Optional[Property]): The name of the privacy object.
@@ -42,7 +42,7 @@ class PrivacyObject(Devices):
     alternateName: Optional[Property] = None
     areaServed: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     name: Optional[Property] = None

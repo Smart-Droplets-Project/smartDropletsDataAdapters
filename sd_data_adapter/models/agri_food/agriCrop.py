@@ -20,7 +20,7 @@ class AgriCrop(AgriFood):
         agroVocConcept: Optional[str] - Reference to the agrovoc term associated with this crop.
         alternateName: Optional[str] - An alternate name for the crop.
         dataProvider: Optional[str] - The data provider for the crop.
-        dataCreated: Optional[str] - The creation date of the crop data.
+        dateCreated: Optional[str] - The creation date of the crop data.
         dateModified: Optional[str] - The date when the crop data was last modified.
         description: Optional[str] - A description of the crop.
         plantingFrom: Optional[List[str]] - A list of the recommended planting interval date(s) for this crop. Specified using ISO8601 repeating date intervals.
@@ -39,7 +39,7 @@ class AgriCrop(AgriFood):
     agroVocConcept: Optional[Union[Property, Relationship]] = None
     alternateName: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     plantingFrom: Optional[Property] = None

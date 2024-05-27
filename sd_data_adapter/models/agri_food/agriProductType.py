@@ -23,7 +23,7 @@ class AgriProductType(AgriFood):
         alternateName (Optional[str]): Alternate name for the product type.
         category (Optional[List[ProductCategory]]): The category/categories to which the product type belongs.
         dataProvider (Optional[str]): The data provider who created this product type.
-        dataCreated (Optional[str]): The date when the product type data was created.
+        dateCreated (Optional[str]): The date when the product type data was created.
         dateModified (Optional[str]): The date when the product type data was last modified.
         description (Optional[str]): The description of the product type.
         hasAgriProductTypeChildren (Optional[List['AgriProductType']]): List of child product types.
@@ -41,7 +41,7 @@ class AgriProductType(AgriFood):
     alternateName: Optional[Property] = None
     category: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     hasAgriProductTypeChildren: Optional[Relationship] = None

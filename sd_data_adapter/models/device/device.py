@@ -20,7 +20,7 @@ class Device(Devices):
         configuration (Optional[Property]): The configuration of the device.
         controlledAsset (Optional[Property]): The controlled asset of the device.
         dataProvider (Optional[Property]): The data provider of the device.
-        dataCreated (Optional[Property]): The date when the data was created.
+        dateCreated (Optional[Property]): The date when the data was created.
         dateModified (Optional[Property]): The date when the device was last modified.
         description (Optional[Property]): The description of the device.
         dateFirstUsed (Optional[Property]): The date when the device was first used.
@@ -67,7 +67,7 @@ class Device(Devices):
     configuration: Optional[Property] = None
     controlledAsset: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     dateFirstUsed: Optional[Property] = None

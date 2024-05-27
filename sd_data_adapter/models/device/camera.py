@@ -18,7 +18,7 @@ class Camera(Devices):
         cameraType (Optional[Property]): The type of the camera.
         cameraUsage (Optional[Property]): The usage of the camera.
         dataProvider (Optional[Property]): The data provider of the camera.
-        dataCreated (Optional[Property]): The date when the data was created.
+        dateCreated (Optional[Property]): The date when the data was created.
         dateModified (Optional[Property]): The date when the data was modified.
         description (Optional[Property]): The description of the camera.
         endDateTime (Optional[Property]): The end date and time of the camera.
@@ -44,7 +44,7 @@ class Camera(Devices):
     cameraType: Optional[Property] = None
     cameraUsage: Optional[Property] = None
     dataProvider: Optional[Property] = None
-    dataCreated: Optional[Property] = None
+    dateCreated: Optional[Property] = None
     dateModified: Optional[Property] = None
     description: Optional[Property] = None
     endDateTime: Optional[Property] = None
