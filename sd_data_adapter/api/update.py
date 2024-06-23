@@ -31,7 +31,6 @@ def upsert(obj: SmartDataModel) -> Union[bool, BatchResult]:
 
     with DAClient.get_instance() as client:
         entity = to_ngsi_ld(obj)
-        print(entity)
-        print(f"Upserting {entity.id} !", type(entity))
+        print(f"Upserting {entity.id} !")
         return client.upsert(entity)
     
