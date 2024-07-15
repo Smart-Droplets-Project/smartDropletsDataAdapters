@@ -3,7 +3,7 @@ import uuid
 from types import NoneType
 from typing import Union, List, Optional
 
-from geojson import LineString, Point, Polygon, MultiPoint, MultiLineString, MultiPolygon
+from geojson import LineString, Point, Polygon, MultiPoint, MultiLineString, MultiPolygon, Feature, FeatureCollection
 from ngsildclient import Entity
 
 
@@ -39,7 +39,7 @@ class Util:
 
 Property = Union[bool, int, float, str, List[str], SmartDataModel, List[SmartDataModel], List[Util], NoneType]
 Relationship = Union[str, List[str]]
-GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
+GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, Feature, FeatureCollection]
 
 
 def to_ngsi_ld(obj: SmartDataModel):
@@ -58,7 +58,13 @@ def to_ngsi_ld(obj: SmartDataModel):
         elif field.type == Relationship:
             entity.rel(field.name, field_value)
         elif field.type == GeoProperty:
-            entity.gprop(field.name, field_value)
+            # NOTE: The underlying library only accepts
+            # [Point, LineString, Polygon, MultiPoint]
+            # as valid geojson inputs at this point. The current
+            # workaround is to store location as a regular prop.
+            
+            # entity.gprop(field.name, field_value)
+            entity.prop(field.name, field_value)
 
     return entity
 
