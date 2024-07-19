@@ -1,6 +1,6 @@
 import dataclasses
 import uuid
-from types import NoneType
+# from types import NoneType
 from typing import Union, List, Optional
 
 from geojson import LineString, Point, Polygon, MultiPoint, MultiLineString, MultiPolygon, Feature, FeatureCollection
@@ -37,7 +37,7 @@ class Util:
     pass
 
 
-Property = Union[bool, int, float, str, List[str], SmartDataModel, List[SmartDataModel], List[Util], NoneType]
+Property = Union[bool, int, float, str, List[str], SmartDataModel, List[SmartDataModel], List[Util], None]
 Relationship = Union[str, List[str]]
 GeoProperty = Union[Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, Feature, FeatureCollection]
 

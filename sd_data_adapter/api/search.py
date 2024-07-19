@@ -1,10 +1,10 @@
-from typing import List
+from typing import List, Union
 
 from ..client import DAClient
 from ..models import to_object, SmartDataModel
 
 
-def get_by_id(id: str) -> SmartDataModel | None:
+def get_by_id(id: str) -> Union[SmartDataModel, None]:
     if not isinstance(id, str):
         raise TypeError('id must be a string')
 
@@ -20,7 +20,7 @@ def get_by_id(id: str) -> SmartDataModel | None:
     return to_object(entity)
 
 
-def search(params: dict = None) -> List[SmartDataModel] | None:
+def search(params: dict = None) -> Union[List[SmartDataModel], None]:
     allowed_params = ['ctx', 'type', 'q', 'limit', 'max']
     if not isinstance(params, dict):
         raise TypeError('params must be a dict')
