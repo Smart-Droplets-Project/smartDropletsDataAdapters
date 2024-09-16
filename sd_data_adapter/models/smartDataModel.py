@@ -47,7 +47,7 @@ def to_ngsi_ld(obj: SmartDataModel):
         raise TypeError(f"Expected SmartDataModel, got {type(obj)}")
 
     entity = Entity(obj.type, obj.id)
-    entity.context = obj.ctx
+    entity.ctx.append(obj.ctx)
     for field in dataclasses.fields(obj):
         field_value = getattr(obj, field.name)
         if field_value is None or field.name == "id" or field.name == "type":
