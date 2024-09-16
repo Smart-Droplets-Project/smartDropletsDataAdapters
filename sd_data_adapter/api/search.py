@@ -4,7 +4,7 @@ from ..client import DAClient
 from ..models import to_object, SmartDataModel
 
 
-def get_by_id(id: str) -> Union[SmartDataModel, None]:
+def get_by_id(id: str, ctx: str = None) -> Union[SmartDataModel, None]:
     if not isinstance(id, str):
         raise TypeError('id must be a string')
 
@@ -12,7 +12,8 @@ def get_by_id(id: str) -> Union[SmartDataModel, None]:
         raise ValueError('id cannot be empty')
 
     with DAClient.get_instance() as client:
-        entity = client.get(id)
+        entity = client.get(id, ctx=ctx)
+        print("\nentity: ", entity, "\n")
 
     if entity is None:
         return None
@@ -20,7 +21,7 @@ def get_by_id(id: str) -> Union[SmartDataModel, None]:
     return to_object(entity)
 
 
-def search(params: dict = None) -> Union[List[SmartDataModel], None]:
+def search(params: dict = None, ctx: str = None) -> Union[List[SmartDataModel], None]:
     allowed_params = ['ctx', 'type', 'q', 'limit', 'max']
     if not isinstance(params, dict):
         raise TypeError('params must be a dict')
@@ -35,7 +36,7 @@ def search(params: dict = None) -> Union[List[SmartDataModel], None]:
     with DAClient.get_instance() as client:
         try:
             client.query_generator()
-            response = client.query(**params)
+            response = client.query(**params, ctx=ctx)
             res_to_obj = []
             for res in response:
                 res_to_obj.append(to_object(res))
