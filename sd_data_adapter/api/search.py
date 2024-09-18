@@ -13,7 +13,6 @@ def get_by_id(id: str, ctx: str = None) -> Union[SmartDataModel, None]:
 
     with DAClient.get_instance() as client:
         entity = client.get(id, ctx=ctx)
-        print("\nentity: ", entity, "\n")
 
     if entity is None:
         return None
