@@ -9,11 +9,15 @@ from ngsildclient import Entity
 
 @dataclasses.dataclass
 class SmartDataModel:
-    id: Optional[Union[str, uuid.UUID]] = uuid.uuid4()
+    id: Optional[Union[str, uuid.UUID]] = None
     type: str = "SmartDataModel"
 
     def __post_init__(self):
         self.type = self.__class__.__name__
+        
+        if self.id is None:
+            self.id = uuid.uuid4()
+        
         if isinstance(self.id, uuid.UUID):
             self.id = f"urn:ngsi-ld:{self.type}:{self.id}-id"
 
@@ -47,7 +51,7 @@ def to_ngsi_ld(obj: SmartDataModel):
         raise TypeError(f"Expected SmartDataModel, got {type(obj)}")
 
     entity = Entity(obj.type, obj.id)
-    entity.context = obj.ctx
+    entity.ctx.append(obj.ctx)
     for field in dataclasses.fields(obj):
         field_value = getattr(obj, field.name)
         if field_value is None or field.name == "id" or field.name == "type":
