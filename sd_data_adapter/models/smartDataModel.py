@@ -61,7 +61,7 @@ def to_ngsi_ld(obj: SmartDataModel):
             entity.prop(field.name, field_value)
         elif field.type == Relationship or field.type == Optional[Relationship]:
             entity.rel(field.name, field_value)
-        elif field.type == GeoProperty:
+        elif field.type == GeoProperty or field.type == Optional[GeoProperty]:
             # NOTE: The underlying library only accepts
             # [Point, LineString, Polygon, MultiPoint]
             # as valid geojson inputs at this point. The current
