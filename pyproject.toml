@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "sd_data_adapter/_version.py"
+
+[tool.semantic_release]
+version_variable = "sd_data_adapter/_version.py:version"
+branch = "release"
+commit_message = "chore: release {version}"
+build_command = "python -m build"
