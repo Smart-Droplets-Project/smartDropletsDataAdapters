@@ -37,6 +37,11 @@ class AutonomousMobileRobot(SmartDataModel):
     ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.AutonomousMobileRobot/master/context.jsonld"
 
 
+@dataclasses.dataclass
+class Weather(SmartDataModel):
+    ctx: str = "https://raw.githubusercontent.com/smart-data-models/dataModel.Weather/master/context.jsonld"
+
+
 class Util:
     pass
 
