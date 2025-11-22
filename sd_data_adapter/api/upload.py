@@ -6,7 +6,7 @@ from ..client import DAClient
 from ..models import to_ngsi_ld, SmartDataModel, to_object
 
 
-def upload(obj: SmartDataModel) -> Union[bool, BatchResult]:
+def upload(obj: SmartDataModel, verbose: bool=False) -> Union[bool, BatchResult]:
     if not isinstance(obj, SmartDataModel):
         raise TypeError(f'Expected a SmartDataModel, got {type(obj)}')
 
@@ -15,5 +15,6 @@ def upload(obj: SmartDataModel) -> Union[bool, BatchResult]:
 
     with DAClient.get_instance() as client:
         entity = to_ngsi_ld(obj)
-        print(f"Saving {entity.id} !")
+        if verbose:
+            print(f"Saving {entity.id} !")
         return client.create(entity)

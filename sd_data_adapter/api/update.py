@@ -6,7 +6,7 @@ from ..client import DAClient
 from ..models import to_ngsi_ld, SmartDataModel, to_object
 
 
-def update(obj: SmartDataModel) -> Union[bool, BatchResult]:
+def update(obj: SmartDataModel, verbose: bool=False) -> Union[bool, BatchResult]:
     if not isinstance(obj, SmartDataModel):
         raise TypeError(f'Expected a SmartDataModel, got {type(obj)}')
 
@@ -15,11 +15,12 @@ def update(obj: SmartDataModel) -> Union[bool, BatchResult]:
 
     with DAClient.get_instance() as client:
         entity = to_ngsi_ld(obj)
-        print(f"Updating {entity.id} !")
+        if(verbose):
+            print(f"Updating {entity.id} !")
         return client.update(entity)
 
 
-def upsert(obj: SmartDataModel) -> Union[bool, BatchResult]:
+def upsert(obj: SmartDataModel, verbose: bool=False) -> Union[bool, BatchResult]:
     '''
     Upsert a single instance of a SmartDataModel
     '''
@@ -31,6 +32,7 @@ def upsert(obj: SmartDataModel) -> Union[bool, BatchResult]:
 
     with DAClient.get_instance() as client:
         entity = to_ngsi_ld(obj)
-        print(f"Upserting {entity.id} !")
+        if verbose:
+            print(f"Upserting {entity.id} !")
         return client.upsert(entity)
     
